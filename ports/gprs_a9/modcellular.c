@@ -866,6 +866,26 @@ STATIC mp_obj_t modcellular_get_imsi(void) {
 
 STATIC MP_DEFINE_CONST_FUN_OBJ_0(modcellular_get_imsi_obj, modcellular_get_imsi);
 
+
+STATIC mp_obj_t modcellular_answer(void) {
+    // ======================================== 
+    // Answer incoming calls.
+    //
+    // ========================================
+    if (!CALL_Answer()) {
+        mp_raise_RuntimeError("Failed to answer the call");
+        return mp_const_none;
+    }
+    return mp_const_none;
+}
+
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(modcellular_answer_obj, modcellular_answer); 
+
+
+
+
+
+
 bool get_flight_mode(void) {
     // Polls flight mode
     bool flag;
@@ -1328,6 +1348,8 @@ STATIC const mp_map_elem_t mp_module_cellular_globals_table[] = {
     { MP_OBJ_NEW_QSTR(MP_QSTR_on_sms), (mp_obj_t)&modcellular_on_sms_obj },
     { MP_OBJ_NEW_QSTR(MP_QSTR_on_call), (mp_obj_t)&modcellular_on_call_obj },
     { MP_OBJ_NEW_QSTR(MP_QSTR_on_ussd), (mp_obj_t)&modcellular_on_ussd_obj },
+    { MP_OBJ_NEW_QSTR(MP_QSTR_answer), (mp_obj_t)&modcellular_answer_obj },
+
 
     { MP_ROM_QSTR(MP_QSTR_NETWORK_FREQ_BAND_GSM_900P), MP_ROM_INT(NETWORK_FREQ_BAND_GSM_900P) },
     { MP_ROM_QSTR(MP_QSTR_NETWORK_FREQ_BAND_GSM_900E), MP_ROM_INT(NETWORK_FREQ_BAND_GSM_900E) },

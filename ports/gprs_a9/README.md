@@ -179,6 +179,7 @@ The purpose of this module is to have an access to high-level networking (SMS, G
 * `on_call(callback: Callable)`: sets a callback `function(number_or_hangup)` on call events (incoming, hangup, etc.);
 * ~~`network_status_changed()` (bool): indicates whether the network status changed since the last check~~ use `on_status_event` instead;
 * ~~`call()` (list[str], [str, None]): calls missed (1st output) and the incoming call number or `None` if no incoming calls at the moment (2nd output)~~ use `on_call` instead;
+* `answer()`: answers incoming calls;
 
 ### `usocket` ###
 
